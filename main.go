@@ -18,6 +18,7 @@ func main() {
 	}
 
 	discord.AddHandler(botcommands.OnServerJoin)
+	discord.AddHandler(botcommands.OnMessageCreate)
 
 	err = discord.Open()
 	if err != nil {
