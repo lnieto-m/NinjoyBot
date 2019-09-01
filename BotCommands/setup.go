@@ -21,6 +21,7 @@ func start(s *discordgo.Session, m *discordgo.MessageCreate) Bot {
 	B.discordMessageCreate = m
 	B.commandList = map[string]interface{}{
 		"help": func(args []string) { B.help(args) },
+		"tag":  func(args []string) { B.manageRoles(args) },
 	}
 	return B
 }
