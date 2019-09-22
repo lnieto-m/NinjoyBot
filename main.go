@@ -2,6 +2,7 @@ package main
 
 import (
 	botcommands "NinjoyBot/BotCommands"
+	issuesdatabase "NinjoyBot/IssuesDatabase"
 	"log"
 	"os"
 	"os/signal"
@@ -11,6 +12,13 @@ import (
 )
 
 func main() {
+
+	err := issuesdatabase.Setup()
+	if err != nil {
+		log.Println("Connection to database impossible", err.Error())
+		return
+	}
+
 	discord, err := discordgo.New("Bot NjE0NTIzMjQ1NDk2MTA3MDQx.XWAuBA.fQx4_llAhlk8SwjUZFSKseRb0_Y")
 	if err != nil {
 		log.Println("Error creating Discord session, ", err)

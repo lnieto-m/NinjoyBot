@@ -1,6 +1,7 @@
 package botcommands
 
 import (
+	"log"
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
@@ -21,7 +22,18 @@ func OnMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-	if strings.HasPrefix(m.Content, "!") {
-		bot.execute(m.Content[1:])
+
+	log.Println(m.Content, m.GuildID)
+
+	if m.GuildID == "" {
+		log.Println("Direct message")
+		bot.modmail()
+		// Direct message
+		// Insert modmail code here
+	} else {
+		// Guild message
+		if strings.HasPrefix(m.Content, "!") {
+			bot.execute(m.Content[1:])
+		}
 	}
 }

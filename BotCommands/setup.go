@@ -6,6 +6,8 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+var maxIssuesOpen = 10
+
 // Bot : Base struct
 type Bot struct {
 	commandList          map[string]interface{}     // command list [commandName] - > corresponding function
