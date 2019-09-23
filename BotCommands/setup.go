@@ -6,7 +6,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-var maxIssuesOpen = 10
+var maxIssuesOpen = 50
 
 // Bot : Base struct
 type Bot struct {

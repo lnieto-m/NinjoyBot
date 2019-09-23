@@ -26,14 +26,12 @@ func OnMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	log.Println(m.Content, m.GuildID)
 
 	if m.GuildID == "" {
-		log.Println("Direct message")
 		bot.modmail()
-		// Direct message
-		// Insert modmail code here
 	} else {
-		// Guild message
 		if strings.HasPrefix(m.Content, "!") {
 			bot.execute(m.Content[1:])
+		} else {
+			bot.issueResponse()
 		}
 	}
 }
